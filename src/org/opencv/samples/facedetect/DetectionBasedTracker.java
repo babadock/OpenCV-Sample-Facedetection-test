@@ -1,0 +1,37 @@
+package org.opencv.samples.facedetect;
+
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfRect;
+
+public class DetectionBasedTracker {
+	private long mNativeObj = 0;
+	public DetectionBasedTracker(String cascadeName, int minFaceSize) {
+		mNativeObj = nativeCreateObject(cascadeName, minFaceSize);
+	}
+	public void start() {
+		nativeStart(mNativeObj);
+	}
+	public void stop() {
+		nativeStop(mNativeObj);
+	}
+	
+	public void setMinFaceSize(int size) {
+		nativeSetFaceSize(mNativeObj,size);
+	}
+	
+	public void detect(Mat imageGray, MatOfRect faces){
+		nativeDetect(mNativeObj, imageGray.getNativeObjAddr(), faces.getNativeObjAddr());
+	}
+	
+	public void release() {
+		nativeDestroyObject(mNativeObj);
+		mNativeObj = 0;
+	}
+	private static native long nativeCreateObject(String cascadeName, int minFaceSize); 
+	private static native void nativeDestroyObject(long mNativeObj2); 
+	private static native void nativeStart(long mNativeObj2); 
+	private static native void nativeStop(long mNativeObj2); 
+	private static native void nativeSetFaceSize(long mNativeObj2, int size); 
+	private static native void nativeDetect(long mNativeObj2, long nativeObjAddr,
+			long nativeObjAddr2); {		}
+}
