@@ -12,9 +12,9 @@ public final class R {
 		public static final int show_fps = 0x7f0100a9;
 	}
 	public static final class id {
-		public static final int any = 0x7f05001e;
-		public static final int back = 0x7f05001f;
-		public static final int front = 0x7f050020;
+		public static final int any = 0x7f06001e;
+		public static final int back = 0x7f06001f;
+		public static final int front = 0x7f060020;
 	}
 	public static final class styleable {
 		public static final int[] CameraBridgeViewBase = { 0x7f0100a9, 0x7f0100aa };
